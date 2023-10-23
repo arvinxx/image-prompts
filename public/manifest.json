@@ -22,7 +22,7 @@
       }
     }
   ],
-  "identifier": "plugin-identifier-standalone",
+  "identifier": "image-prompts",
   "type": "standalone",
   "ui": {
     "url": "http://localhost:3400/iframe",
