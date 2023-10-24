@@ -48,13 +48,13 @@
     "not ie <= 10"
   ],
   "dependencies": {
-    "@lobehub/chat-plugin-sdk": "^1.18.0",
+    "@lobehub/chat-plugin-sdk": "^1.19.0",
     "@lobehub/chat-plugins-gateway": "^1",
     "@lobehub/ui": "latest",
     "antd": "^5",
     "antd-style": "^3",
     "dayjs": "^1",
-    "next": "13.4.7",
+    "next": "^13.5.6",
     "react": "^18",
     "react-dom": "^18",
     "react-layout-kit": "^1"

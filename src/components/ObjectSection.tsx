@@ -9,7 +9,7 @@ interface ObjectSectionProps {
 
 const ObjectSection: FC<ObjectSectionProps> = ({ objects = [], activeObject, onObjectClick }) => {
   return (
-    <Flex className="object-section" gap={8}>
+    <Flex className="object-section" gap={8} wrap={'wrap'}>
       {objects.map((object, index) => (
         <Button
           key={index}

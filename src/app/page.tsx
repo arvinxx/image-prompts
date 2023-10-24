@@ -1,7 +1,9 @@
 'use client';
 
+import { usePluginState } from '@lobehub/chat-plugin-sdk/client';
 import { Col, Row, Typography } from 'antd';
-import { FC, useEffect, useState } from 'react';
+import { useTheme } from 'antd-style';
+import { FC, useEffect } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
 import AttributeSection from '@/components/AttributeSection';
@@ -35,10 +37,10 @@ const getAttributes = (currentObject: string, data: Tag[]) => {
 
 const Home: FC = () => {
   const objects = getObjects(tagsData) || [];
-  const [activeObject, setActiveObject] = useState(objects[0]);
+  const [activeObject, setActiveObject] = usePluginState('object', objects[0]);
   const attributes = getAttributes(activeObject, tagsData) || [];
-  const [activeAttribute, setActiveAttribute] = useState(attributes[0]);
-  const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
+  const [activeAttribute, setActiveAttribute] = usePluginState('attribute', attributes[0]);
+  const [selectedTags, setSelectedTags] = usePluginState<Tag[]>('tags', []);
 
   useEffect(() => {
     const attributes = getAttributes(activeObject, tagsData);
@@ -64,8 +66,16 @@ const Home: FC = () => {
     setSelectedTags(updateSelectedTags(tag));
   };
 
+  const theme = useTheme();
   return (
-    <Flexbox style={{ margin: '0 auto', maxWidth: '1200px', padding: '24px' }}>
+    <Flexbox
+      style={{
+        background: theme.colorBgLayout,
+        margin: '0 auto',
+        maxWidth: '1200px',
+        padding: '24px',
+      }}
+    >
       <Title
         level={2}
         style={{

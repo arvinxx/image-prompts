@@ -7,7 +7,11 @@ import { PropsWithChildren } from 'react';
 
 const Wrapper = ({ children }: PropsWithChildren) => {
   const theme = useTheme();
-  return <App style={{ background: theme.colorBgLayout, height: '100vh' }}>{children}</App>;
+  return (
+    <App style={{ background: theme.colorBgLayout, height: '100%', minHeight: '100vh' }}>
+      {children}
+    </App>
+  );
 };
 
 export default ({ children }: PropsWithChildren) => (

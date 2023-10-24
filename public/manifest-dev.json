@@ -1,0 +1,21 @@
+{
+  "api": [
+    {
+      "url": "https://image-prompts.arvinx.com/",
+      "name": "init",
+      "description": "当用户希望画画时，可以调用该方法初始化 prompts 生成器初始化绘画助手",
+      "parameters": {
+        "properties": {},
+        "type": "object"
+      }
+    }
+  ],
+  "identifier": "image-prompts",
+  "type": "standalone",
+  "ui": {
+    "url": "http://localhost:3400",
+    "height": 800,
+    "width": 1200
+  },
+  "version": "1"
+}

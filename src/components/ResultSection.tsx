@@ -1,4 +1,5 @@
-import { App, Button, Flex, Input, Tooltip, Typography } from 'antd';
+import { postToFillPluginContent } from '@lobehub/chat-plugin-sdk/client';
+import { App, Button, Divider, Flex, Input, Tooltip, Typography } from 'antd';
 import React, { FC, useEffect, useState } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
@@ -142,6 +143,10 @@ const ResultSection: FC<ResultSectionProps> = ({
     setCharCount(newText.length);
   };
 
+  const handleSave = () => {
+    postToFillPluginContent(resultText);
+  };
+
   return (
     <Flexbox className="result-section" gap={8}>
       <Flex gap={8} wrap={'wrap'}>
@@ -151,8 +156,6 @@ const ResultSection: FC<ResultSectionProps> = ({
         <Tooltip title="插入常用图像润色词">
           <Button onClick={() => handleConstantText(CONSTANT_TEXT_2)}>常用润色</Button>
         </Tooltip>
-        <Button onClick={handleCopy}>复制</Button>
-        <Button onClick={handleClear}>清空</Button>
       </Flex>
 
       <Input.TextArea
@@ -162,9 +165,20 @@ const ResultSection: FC<ResultSectionProps> = ({
         rows={10}
         value={resultText}
       />
-      <Typography.Text style={{ color: charCount > 380 ? 'red' : 'inherit' }}>
+
+      <Typography.Text style={{ alignSelf: 'end', color: charCount > 380 ? 'red' : 'inherit' }}>
         {charCount}/380
       </Typography.Text>
+
+      <Flex gap={12} style={{ alignSelf: 'end' }}>
+        <Button onClick={handleCopy}>复制</Button>
+        <Button onClick={handleClear}>清空</Button>
+        <Button onClick={handleSave} type={'primary'}>
+          保存
+        </Button>
+      </Flex>
+
+      <Divider />
       <Typography.Paragraph type="secondary">
         Tips：Prompt
         中的词语顺序代表其权重，越靠前权重越大。物体不要太多，两到三个就好。若要特别强调某个元素，可以加很多括号或者惊叹号，比如
