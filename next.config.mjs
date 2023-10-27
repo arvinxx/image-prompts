@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  transpilePackages: ['@lobehub/ui'，'antd-style'],
+  transpilePackages: ['@lobehub/ui', 'antd-style'],
   async headers() {
     return [
       {
